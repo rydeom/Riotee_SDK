@@ -147,6 +147,7 @@ SECTIONS {
                 *(.teardown)
                 __teardown_end__ = .;
                 __bss_end__ = .;
+                end = __bss_end__;
         } >RAM_VOLATILE
 
         .bss_retained (NOLOAD) : {
