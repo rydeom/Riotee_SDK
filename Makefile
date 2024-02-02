@@ -5,6 +5,7 @@ RTOS_DIR := $(RIOTEE_SDK_ROOT)/external/freertos
 NRFX_DIR := $(RIOTEE_SDK_ROOT)/external/nrfx
 CMSIS_DIR := $(RIOTEE_SDK_ROOT)/external/CMSIS_5
 CMSIS_NN_DIR := $(RIOTEE_SDK_ROOT)/external/CMSIS-NN
+CMSIS_DSP_DIR := $(RIOTEE_SDK_ROOT)/external/CMSIS-DSP
 LINKER_SCRIPT:= $(RIOTEE_SDK_ROOT)/linker.ld
 NRF_DEV_NUM := 52833
 
@@ -53,7 +54,8 @@ INC_DIRS += \
   $(NRFX_DIR)/mdk \
   $(NRFX_DIR)/templates \
   $(CMSIS_DIR)/CMSIS/Core/Include \
-  $(CMSIS_NN_DIR)/Include
+  $(CMSIS_NN_DIR)/Include \
+  $(CMSIS_DSP_DIR)/Include
 
 INCLUDES = $(INC_DIRS:%=-I%)
 

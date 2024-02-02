@@ -13,3 +13,6 @@
 [submodule "external/CMSIS-NN"]
 	path = external/CMSIS-NN
 	url = https://github.com/ARM-software/CMSIS-NN.git
+[submodule "external/CMSIS-DSP"]
+	path = external/CMSIS-DSP
+	url = https://github.com/ARM-software/CMSIS-DSP.git
