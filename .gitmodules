@@ -10,3 +10,6 @@
 [submodule "external/ArduinoCore-API"]
 	path = external/ArduinoCore-API
 	url = https://github.com/arduino/ArduinoCore-API
+[submodule "external/CMSIS-NN"]
+	path = external/CMSIS-NN
+	url = https://github.com/ARM-software/CMSIS-NN.git
