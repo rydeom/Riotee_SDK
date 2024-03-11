@@ -10,10 +10,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-//
+// 
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-//
+// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -35,9 +35,11 @@
 #include <stdarg.h>
 #include <stddef.h>
 
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 
 /**
  * Output a character to a custom device like UART, used by the printf() function
@@ -45,6 +47,7 @@ extern "C" {
  * \param character Character to output
  */
 void _putchar(char character);
+
 
 /**
  * Tiny printf implementation
@@ -56,6 +59,7 @@ void _putchar(char character);
  */
 #define printf printf_
 int printf_(const char* format, ...);
+
 
 /**
  * Tiny vprintf implementation
@@ -69,6 +73,7 @@ int printf_(const char* format, ...);
 #define vprintf vprintf_
 int vprintf_(const char* format, va_list va);
 
+
 /**
  * Tiny sprintf implementation
  * Due to security reasons (buffer overflow) YOU SHOULD CONSIDER USING (V)SNPRINTF INSTEAD!
@@ -79,6 +84,7 @@ int vprintf_(const char* format, va_list va);
 #define sprintf sprintf_
 int sprintf_(char* buffer, const char* format, ...);
 
+
 /**
  * Tiny snprintf/vsnprintf implementation
  * \param buffer A pointer to the buffer where to store the formatted string
@@ -87,10 +93,11 @@ int sprintf_(char* buffer, const char* format, ...);
  * \return The number of characters that are WRITTEN into the buffer, not counting the terminating null character
  *         If the formatted string is truncated the buffer size (count) is returned
  */
-#define snprintf snprintf_
+#define snprintf  snprintf_
 #define vsnprintf vsnprintf_
 int snprintf_(char* buffer, size_t count, const char* format, ...);
 int vsnprintf_(char* buffer, size_t count, const char* format, va_list va);
+
 
 /**
  * printf with output function
@@ -102,8 +109,10 @@ int vsnprintf_(char* buffer, size_t count, const char* format, va_list va);
  */
 int fctprintf(void (*out)(char character, void* arg), void* arg, const char* format, ...);
 
+
 #ifdef __cplusplus
 }
 #endif
+
 
 #endif  // _PRINTF_H_
