@@ -4,8 +4,6 @@ DRIVER_DIR := $(RIOTEE_SDK_ROOT)/drivers
 RTOS_DIR := $(RIOTEE_SDK_ROOT)/external/freertos
 NRFX_DIR := $(RIOTEE_SDK_ROOT)/external/nrfx
 CMSIS_DIR := $(RIOTEE_SDK_ROOT)/external/CMSIS_5
-CMSIS_NN_DIR := $(RIOTEE_SDK_ROOT)/external/CMSIS-NN
-CMSIS_DSP_DIR := $(RIOTEE_SDK_ROOT)/external/CMSIS-DSP
 LINKER_SCRIPT:= $(RIOTEE_SDK_ROOT)/linker.ld
 NRF_DEV_NUM := 52833
 
@@ -53,9 +51,7 @@ INC_DIRS += \
   $(NRFX_DIR)/hal \
   $(NRFX_DIR)/mdk \
   $(NRFX_DIR)/templates \
-  $(CMSIS_DIR)/CMSIS/Core/Include \
-  $(CMSIS_NN_DIR)/Include \
-  $(CMSIS_DSP_DIR)/Include
+  $(CMSIS_DIR)/CMSIS/Core/Include 
 
 INCLUDES = $(INC_DIRS:%=-I%)
 
@@ -67,7 +63,6 @@ CFLAGS = ${INCLUDES}
 CFLAGS += $(OPT)
 # used to pass in defines from command line
 CFLAGS += $(USER_DEFINES)
-CFLAGS += -DDISABLE_CAP_MON
 CFLAGS += -DNRF${NRF_DEV_NUM}_XXAA
 CFLAGS += -DRIOTEE_STACK_SIZE=${RIOTEE_STACK_SIZE}
 CFLAGS += -DARM_MATH_CM4
@@ -101,10 +96,10 @@ LDFLAGS += $(LIBS)
 # let linker dump unused sections
 LDFLAGS += -Wl,--gc-sections,-Map=${OUTPUT_DIR}/build.map
 # use newlib in nano version and system call stubs
-LDFLAGS += --specs=nano.specs
+LDFLAGS += --specs=nano.specs --specs=nosys.specs --specs=rdimon.specs
 LDFLAGS += -Wl,--defsym=RIOTEE_RAM_RETAINED_SIZE=${RIOTEE_RAM_RETAINED_SIZE}
 
-LIB_FILES += -lm
+LIB_FILES += -lm -lc -lnosys -lrdimon
 
 ARFLAGS = -rcs
 

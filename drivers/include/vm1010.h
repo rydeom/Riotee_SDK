@@ -11,9 +11,17 @@ typedef struct {
   unsigned int pin_vbias;
 } vm1010_cfg_t;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int vm1010_init(vm1010_cfg_t *cfg);
 void vm1010_exit(void);
 riotee_rc_t vm1010_sample(int16_t *result, unsigned int n_samples, unsigned int sample_interval_ticks32);
 riotee_rc_t vm1010_wait4sound(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __VM1010_H_ */
